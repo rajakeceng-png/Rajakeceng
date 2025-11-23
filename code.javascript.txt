@@ -24,3 +24,4 @@ function updateKeranjang() {
 checkoutBtn.addEventListener('click', () => {
     alert('Fitur checkout belum lengkap. Integrasikan dengan payment gateway seperti Midtrans.');
 });
+
