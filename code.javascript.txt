@@ -1,0 +1,26 @@
+let keranjang = [];
+const keranjangLink = document.querySelector('nav a[href="#keranjang"]');
+const daftarKeranjang = document.getElementById('daftar-keranjang');
+const checkoutBtn = document.getElementById('checkout');
+
+document.querySelectorAll('.tambah-keranjang').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const produk = btn.parentElement;
+        const id = produk.dataset.id;
+        const nama = produk.querySelector('h3').textContent;
+        const harga = produk.querySelector('p').textContent;
+        
+        keranjang.push({ id, nama, harga });
+        updateKeranjang();
+    });
+});
+
+function updateKeranjang() {
+    keranjangLink.textContent = `Keranjang (${keranjang.length})`;
+    daftarKeranjang.innerHTML = keranjang.map(item => `<li>${item.nama} - ${item.harga}</li>`).join('');
+    document.getElementById('keranjang').style.display = keranjang.length ? 'block' : 'none';
+}
+
+checkoutBtn.addEventListener('click', () => {
+    alert('Fitur checkout belum lengkap. Integrasikan dengan payment gateway seperti Midtrans.');
+});
